@@ -36,6 +36,11 @@ char data8[]={"Gyro:"};
 char data10[]={"                "};
 void MefMenuImprimir(float* pdata);
 void LCD_Limpiar();
+
+/*@brief MenuMEF_Init : inicializa todos los módulos y define el estado inicial
+ * @param void
+ * @return void
+*/
 void MenuMEF_Init(){
     LCD_Init(ADDR_LCD);
     MPU6050_Init();
@@ -44,6 +49,11 @@ void MenuMEF_Init(){
 	 delayInit(&delayMenu,ESPERA);
 }
 
+/*@brief MenuMEF_Update : manntiene una lectura constante de la máquina de estados y
+ * actualiza el LCD si se ha presionado el botón
+ * @param void
+ * @return void
+*/
 void MenuMEF_Uptade(){
     debounceFSM_Update();
 	switch(EstadoMenu)
@@ -81,22 +91,7 @@ void MenuMEF_Uptade(){
 		}
 		break;
 
-		/*case EstadoMenu_3:
-		LCD_WriteXY(ADDR_LCD,(char*)data0,R1,LCDPOSL);
-		LCD_WriteXY(ADDR_LCD,(char*)(data3),R2,LCDPOSL);
-		if(readKeyAsc())
-		{
-			LCD_Limpiar();
-		    EstadoMenu=EstadoMenu_1;
-		}
 
-		else if(readKeyPress())
-		{
-			LCD_Limpiar();
-		EstadoMenu=EstadoMenu_6;
-		}
-		break;
-*/
 		case EstadoMenu_3:
 		LCD_WriteXY(ADDR_LCD, (char*) data7, R1, LCDPOSL);
 		MefMenuImprimir(MPU_ReadAcc());
@@ -119,19 +114,7 @@ void MenuMEF_Uptade(){
 			EstadoMenu=EstadoMenu_2;
 		}
 		break;
-		/*
-		case EstadoMenu_6:
-				//float* Acc=MPU_ReadAcc();
 
-				MefMenuImprimir(MPU_ReadGyro());
-
-				if(readKeyPress())
-				{
-					LCD_Limpiar();
-					EstadoMenu=EstadoMenu_3;
-				}
-				break;
-		break;*/
 		default:EstadoMenu=EstadoMenu_1;
 	}
 	
@@ -139,12 +122,21 @@ void MenuMEF_Uptade(){
 	
 }
 
+/*@brief LCD_Limpiar: Limpia la pantalla cuando cambia de estado
+ * @param void
+ * @return void
+*/
 void LCD_Limpiar()
 {
 	LCD_WriteXY(ADDR_LCD, (char*) (data10), R1, LCDPOSL);
 	LCD_WriteXY(ADDR_LCD, (char*) (data10), R2, LCDPOSL);
 }
 
+/*@brief MefMenuImprimir: Secuencia para imprimir la pantalla :Obtiene datos del imu
+ * y son enviados al lcd
+ * @param float* pdata
+ * @return void
+*/
 void MefMenuImprimir(float* pdata)
 {
 	snprintf(data,DATOSF2S, "%.2f", *(pdata));
