@@ -5,16 +5,16 @@
  *      Author: ubuntu
  */
 
-#ifndef API_INC_MEF_MENU_H_
-#define API_INC_MEF_MENU_H_
-#include "MPU6050.h"
+#ifndef API_INC_API_MEF_MENU_H_
+#define API_INC_API_MEF_MENU_H_
+#include <API_MPU6050.h>
 
 #ifndef NC_LCD_H_
-#include "LCD.h"
+#include <API_LCD.h>
 #endif
 
 #ifndef API_INC_I2C_H_
-#include "I2C.h"
+#include <API_I2C.h>
 #endif
 #ifndef API_INC_STDIO_H_
 #include "stdio.h"
@@ -31,4 +31,4 @@
 void MenuMEF_Init(void);
 void MenuMEF_Uptade(void);
 
-#endif /* API_INC_MEF_MENU_H_ */
+#endif /* API_INC_API_MEF_MENU_H_ */

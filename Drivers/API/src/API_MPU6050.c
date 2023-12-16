@@ -4,8 +4,8 @@
  *  Created on: Nov 26, 2023
  *      Author: ubuntu
  */
-#include "MPU6050.h"
-#include "I2C.h"
+#include <API_I2C.h>
+#include <API_MPU6050.h>
 //Registros para configuracion del MPU6050
 #define SMPLRT_DIV_REG   0x19
 #define GYRO_CONFIG_REG  0x1B

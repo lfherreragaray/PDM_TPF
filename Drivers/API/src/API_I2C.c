@@ -4,7 +4,7 @@
  *  Created on: Nov 20, 2023
  *      Author: ubuntu
  */
-#include "I2C.h"
+#include <API_I2C.h>
 #include "strings.h"
 #define TIMEOUT 10
 #define CORRIMIENTO_1 <<1

@@ -4,7 +4,7 @@
  *  Created on: Nov 26, 2023
  *      Author: ubuntu
  */
-#include "LCD.h"
+#include <API_LCD.h>
 #define E 	0x4 //enable-> perminte comenzar la transmision de datos al LCD
 #define BL	0x8//backlight-> variable que controla el led de iluminacion del lcd
 #define CHAR 	0x1//-> tanto cmd como char corresponden al valor de rs, que permite enviar tanto comandos como caracteres
